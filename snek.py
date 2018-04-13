@@ -137,5 +137,5 @@ while True:
                 pygame.quit()
                 sys.exit()
     GPIO.output(18,GPIO.LOW)
-    KLOK.tick(1)
+    pygame.time.delay(750)
     GPIO.output(18,GPIO.HIGH)       
