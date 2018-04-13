@@ -94,6 +94,7 @@ while True:
         lengte = lengte + 1
         score = score + 1
         GPIO.output(18,GPIO.HIGH)
+        pygame.time.delay(240-int(lengte/5)*20)
         GPIO.output(18,GPIO.LOW)
 
 
