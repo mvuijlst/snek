@@ -1,6 +1,8 @@
 import pygame
 import sys
 import random
+import RPi.GPIO as GPIO
+import time
 from pygame.locals import *
 
 
@@ -12,6 +14,10 @@ grootte = 20
 resolutie = breedte*grootte, hoogte*grootte
 
 #pygame.display.set_mode(resolutie, pygame.FULLSCREEN) 
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(18,GPIO.OUT)
 
 pygame.init()
 
@@ -41,7 +47,6 @@ def teken():
         pygame.draw.line(DISPLAY, GRIJS, (1, (h+1)*grootte), (breedte*grootte-2, (h+1)*grootte), 1)       
 
     pygame.display.update()
-
 
 fruit = [random.randrange(1,breedte-1), random.randrange(1,hoogte-1)]
 
@@ -88,6 +93,11 @@ while True:
         fruit = [random.randrange(1, breedte-1), random.randrange(1, hoogte-1)]
         lengte = lengte + 1
         score = score + 1
+        for t in range(5):
+            GPIO.output(18,GPIO.HIGH)
+            time.sleep(0.2)
+            GPIO.output(18,GPIO.LOW)
+
 
     for t in range(lengte-1):
         slang.append(list(oude_slang[t]))
