@@ -27,6 +27,10 @@ ROOD = (255, 0, 0)
 ZWART = (0,0,0)
 WIT = (255, 255, 255)
 GRIJS = (20, 51, 51)
+BOVEN = 1
+RECHTS = 2
+ONDER = 3
+LINKS = 4
 eetgeluid = pygame.mixer.Sound('eet.wav')
 slang = [[int(breedte/2), int(hoogte/2)]]
 richting = random.randrange(1,4)
@@ -58,26 +62,26 @@ while True:
                 pygame.quit()
                 sys.exit()
             k = pygame.key.get_pressed()
-            if k[K_UP] and richting != 3: 
-                richting = 1
-            if k[K_RIGHT] and richting != 4: 
-                richting = 2
-            if k[K_DOWN] and richting != 1: 
-                richting = 3
-            if k[K_LEFT] and richting != 2: 
-                richting = 4
+            if k[K_UP] and richting != ONDER: 
+                richting = BOVEN
+            if k[K_RIGHT] and richting != LINKS: 
+                richting = RECHTS
+            if k[K_DOWN] and richting != BOVEN: 
+                richting = ONDER
+            if k[K_LEFT] and richting != RECHTS: 
+                richting = LINKS
 
     oude_slang = list(slang)
     slang = []
     slang.append(list(oude_slang[0]))
 
-    if richting == 1:
+    if richting == BOVEN:
         slang[0][1] = slang[0][1]-1
-    if richting == 2:
+    if richting == RECHTS:
         slang[0][0] = slang[0][0]+1
-    if richting == 3:
+    if richting == ONDER:
         slang[0][1] = slang[0][1]+1
-    if richting == 4:
+    if richting == LINKS:
         slang[0][0] = slang[0][0]-1
 
     if slang[0][1] < 0: 
