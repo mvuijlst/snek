@@ -139,3 +139,5 @@ while True:
     GPIO.output(18,GPIO.HIGH)       
     time.sleep(1)
     GPIO.output(18,GPIO.LOW)
+    time.sleep(1)
+    
