@@ -51,6 +51,7 @@ def teken():
 fruit = [random.randrange(1,breedte-1), random.randrange(1,hoogte-1)]
 
 while True:
+    GPIO.output(18,GPIO.LOW)
     for e in pygame.event.get():
         if e.type == KEYDOWN:
             if e.key == K_ESCAPE:
@@ -94,9 +95,6 @@ while True:
         lengte = lengte + 1
         score = score + 1
         GPIO.output(18,GPIO.HIGH)
-        pygame.time.delay(240-int(lengte/5)*20)
-        GPIO.output(18,GPIO.LOW)
-
 
     for t in range(lengte-1):
         slang.append(list(oude_slang[t]))
