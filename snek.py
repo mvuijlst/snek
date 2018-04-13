@@ -1,7 +1,7 @@
 import pygame
 import sys
 import random
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 from pygame.locals import *
 
@@ -13,9 +13,9 @@ RESOLUTIE = BREEDTE*GROOTTE, HOOGTE*GROOTTE
 
 #pygame.display.set_mode(resolutie, pygame.FULLSCREEN) 
 
-#GPIO.setmode(GPIO.BCM)
-#GPIO.setwarnings(False)
-#GPIO.setup(18,GPIO.OUT)
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(18,GPIO.OUT)
 
 pygame.init()
 pygame.font.init()
@@ -68,7 +68,7 @@ def teken():
 fruit = [random.randrange(1,BREEDTE-1), random.randrange(1,HOOGTE-1)]
 
 while GAMEOVER == False:
-    #GPIO.output(18,GPIO.LOW)
+    GPIO.output(18,GPIO.LOW)
     for e in pygame.event.get():
         if e.type == KEYDOWN:
             if e.key == K_ESCAPE:
@@ -114,7 +114,7 @@ while GAMEOVER == False:
         fruit = [random.randrange(1, BREEDTE-1), random.randrange(1, HOOGTE-1)]
         lengte = lengte + 1
         score = score + 1
-        #GPIO.output(18,GPIO.HIGH)
+        GPIO.output(18,GPIO.HIGH)
         FPS = min(5 + int(score/5), 25)
 
     for t in range(lengte-1):
@@ -136,3 +136,6 @@ while True:
             if e.key == K_ESCAPE:
                 pygame.quit()
                 sys.exit()
+    GPIO.output(18,GPIO.LOW)
+    KLOK.tick(4)
+    GPIO.output(18,GPIO.HIGH)       
