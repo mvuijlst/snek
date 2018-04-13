@@ -93,10 +93,8 @@ while True:
         fruit = [random.randrange(1, breedte-1), random.randrange(1, hoogte-1)]
         lengte = lengte + 1
         score = score + 1
-        for t in range(5):
-            GPIO.output(18,GPIO.HIGH)
-            time.sleep(0.2)
-            GPIO.output(18,GPIO.LOW)
+        GPIO.output(18,GPIO.HIGH)
+        GPIO.output(18,GPIO.LOW)
 
 
     for t in range(lengte-1):
