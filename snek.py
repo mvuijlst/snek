@@ -137,5 +137,5 @@ while True:
                 pygame.quit()
                 sys.exit()
     GPIO.output(18,GPIO.LOW)
-    pygame.time.delay(750)
+    time.sleep(1)
     GPIO.output(18,GPIO.HIGH)       
